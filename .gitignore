@@ -133,3 +133,4 @@ dmypy.json
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/.gitignore
+.vscode/settings.json
