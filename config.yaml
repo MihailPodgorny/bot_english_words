@@ -1,0 +1,10 @@
+Telegram:
+  Token: { { YOUR_TOKEN } }
+Postgres:
+  Host: localhost
+  Port: 5432
+  User: { { DB_USER } }
+  Password: { { DB_PASSORD } }
+  DBName: { { DB_NAME } }
+  SSLMode: false
+  PgDriver: pgx

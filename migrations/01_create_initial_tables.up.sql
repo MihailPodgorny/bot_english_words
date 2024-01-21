@@ -1,0 +1,29 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS words CASCADE;
+DROP TABLE IF EXISTS users_words CASCADE;
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE users (
+    chat_id INTEGER PRIMARY KEY,
+    count_words INTEGER DEFAULT 0 NOT NULL,
+    studied_words INTEGER DEFAULT 0 NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
+);
+
+
+CREATE TABLE words (
+    word_id INTEGER PRIMARY KEY,
+    word_text VARCHAR(250) DEFAULT '' NOT NULL,
+    translation VARCHAR(250) DEFAULT '' NOT NULL,
+    word_image VARCHAR(250) DEFAULT '' NOT NULL
+);
+
+CREATE TABLE users_words (
+    chat_id INTEGER  NOT NULL,
+    word_id INTEGER NOT NULL,
+    PRIMARY KEY (chat_id, word_id),
+    FOREIGN KEY (chat_id) REFERENCES users (chat_id) ON UPDATE CASCADE,
+    FOREIGN KEY (word_id) REFERENCES words (word_id) ON UPDATE CASCADE
+);
